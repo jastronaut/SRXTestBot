@@ -6,6 +6,11 @@ class Drive{
 public:
 	Drive();
 	~Drive();
+	float linearizeDrive(float inputVal);
+	float setForward(float forward);
+	float setTurn(float turn);
+	float setStrafe(float strafe);
+	
 private:
 	CANTalon* leftMotor;
 };
