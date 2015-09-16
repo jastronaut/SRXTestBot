@@ -3,12 +3,10 @@
 #include "DriveMacros.h"
 
 class Drive{
+public:
+	Drive();
+	~Drive();
 private:
 	CANTalon* leftMotor;
-public:
-	Drive(){
-		leftMotor = new CANTalon(LEFT_MOTOR_PORT);
-	}
-	~Drive();
 };
 #endif DRIVE_H

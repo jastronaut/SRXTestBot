@@ -1,13 +1,15 @@
 #include "WPILib.h"
-#include "../Drive/Drive.cpp"
+#include "Drive/Drive.cpp"
 class SRXTestBot: public IterativeRobot
 {
 private:
-	LiveWindow *lw;
-
+	//LiveWindow *lw; do we need this?
+	Drive* drive;
+	
 	void RobotInit()
 	{
-		lw = LiveWindow::GetInstance();
+		//lw = LiveWindow::GetInstance(); wat
+		drive = new Drive();
 	}
 
 	void AutonomousInit()
@@ -32,7 +34,7 @@ private:
 
 	void TestPeriodic()
 	{
-		lw->Run();
+		//lw->Run(); ok then
 	}
 };
 
