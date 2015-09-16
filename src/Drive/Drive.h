@@ -10,8 +10,9 @@ public:
 	float setForward(float forward);
 	float setTurn(float turn);
 	float setStrafe(float strafe);
-	
+
 private:
 	CANTalon* leftMotor;
+	Joystick* driveJoystick;
 };
 #endif DRIVE_H
