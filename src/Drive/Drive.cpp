@@ -46,5 +46,11 @@ float Drive::setStrafe(float strafe)
 
 float Drive::linearizeDrive(float inputVal)
 {
-
-} 
+	float slope = 1.0/(DEADZONE - 1);
+	if(inputVal > DEADZONE)
+		return slope*(inputVal - DEADZONE);
+	else if(inputVal < -DEADZONE)
+		return (-1.0)*slope*(inputVal + DEADZONE);
+	else
+		return 0;
+}
