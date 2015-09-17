@@ -38,11 +38,11 @@ private:
 
 	void printSmartDashboard()
 	{
-		oi->getDashboard()->PutNumber("Forward: ", drive->GetYForward());
-		oi->getDashboard()->PutNumber("Turn: ", drive->getXTurn);
+		oi->getDashboard()->PutNumber("Forward: ", drive->getYForward());
+		oi->getDashboard()->PutNumber("Turn: ", drive->getXTurn());
 		oi->getDashboard()->PutBoolean("Strafe button: ", drive->checkStrafe());
 		if(!drive->checkStrafe())
-			oi->getDashboard()->PutNumber("Strafe: ", drive->GetXTurn());
+			oi->getDashboard()->PutNumber("Strafe: ", drive->getXTurn());
 		else
 			oi->getDashboard()->PutNumber("Strafe: ", 0);
 	}

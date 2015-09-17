@@ -1,6 +1,7 @@
 #include "Drive.h"
 
-Drive::Drive(){
+Drive::Drive()
+{
 	leftMotor = new CANTalon(LEFT_MOTOR_PORT);
 	rightMotor = new CANTalon(RIGHT_MOTOR_PORT);
 	driveJoystick = new Joystick(DRIVE_JOYSTICK_PORT);
@@ -34,8 +35,12 @@ float Drive::getXTurn()
 bool Drive::checkStrafe()
 {
 	while(driveJoystick->GetRawButton(STRAFE_BUTTON))
+	{
 		return true;
-	if(!driveJoystick->GetRawButton(STRAFE_BUTTON))
+		if(!driveJoystick->GetRawButton(STRAFE_BUTTON))
+			break;
+	}
+	//if(!driveJoystick->GetRawButton(STRAFE_BUTTON))
 		return false;
 }
 
