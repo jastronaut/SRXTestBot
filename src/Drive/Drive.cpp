@@ -4,6 +4,10 @@ Drive::Drive(){
 	leftMotor = new CANTalon(LEFT_MOTOR_PORT);
 	rightMotor = new CANTalon(RIGHT_MOTOR_PORT);
 	driveJoystick = new Joystick(DRIVE_JOYSTICK_PORT);
+
+	forward = 0;
+	turn = 0;
+	strafe = 0;
 }
 
 Drive::~Drive()
@@ -12,30 +16,26 @@ Drive::~Drive()
 	delete rightMotor;
 	delete driveJoystick;
 
-
 	leftMotor = NULL;
 	rightMotor = NULL;
 	driveJoystick = NULL;
-
 }
 
-/*
-float Drive::getXValue()
-{
-	return driveJoystick->GetX();
-}
-
-float Drive::getYValue()
+float Drive::getYForward()
 {
 	return driveJoystick->GetY();
 }
-*/
+
+float Drive::getXTurn()
+{
+	return driveJoystick->GetX();
+}
 
 bool Drive::checkStrafe()
 {
 	while(driveJoystick->GetRawButton(STRAFE_BUTTON))
 		return true;
-	else
+	if(!driveJoystick->GetRawButton(STRAFE_BUTTON))
 		return false;
 }
 
@@ -85,11 +85,11 @@ float Drive::linearizeDrive(float inputVal)
 		return 0;
 }
 
-void Drive::driveMotors(float forward, float turn, float strafe)
+void Drive::driveMotors()
 {
-	setForward(driveJoystick->GetY());
-	settTurn(driveJoystick->GetX());
-	setStrafe(driveJoystick->GetX());
+	forward = setForward(driveJoystick->GetY());
+	turn = setTurn(driveJoystick->GetX());
+	strafe = setStrafe(driveJoystick->GetX());
 	leftMotor->Set(linearizeDrive(forward - turn + strafe));
 	rightMotor->Set(linearizeDrive(-forward + turn - strafe));
 }
