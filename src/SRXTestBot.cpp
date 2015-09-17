@@ -35,6 +35,7 @@ private:
 	void TestPeriodic()
 	{
 		//lw->Run(); ok then
+		drive->driveMotors(drive->GetXValue());
 	}
 };
 
