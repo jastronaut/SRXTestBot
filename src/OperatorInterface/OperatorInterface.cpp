@@ -2,7 +2,7 @@
 
 OperatorInterface::OperatorInterface()
 {
-	dashboard->init(); 
+	dashboard->init();
 }
 
 OperatorInterface::~OperatorInterface()

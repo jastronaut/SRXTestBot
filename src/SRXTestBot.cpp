@@ -1,6 +1,6 @@
-#include "WPILib.h"
-#include "Drive/Drive.cpp"
-#include "OperatorInterface/OperatorInterface.cpp"
+#include "Drive/DriveMacros.h"
+#include "Drive/Drive.h"
+#include "OperatorInterface/OperatorInterface.h"
 class SRXTestBot: public IterativeRobot
 {
 private:

@@ -4,8 +4,24 @@
 
 class Drive{
 public:
-	Drive();
-	~Drive();
+	Drive(){
+		leftMotor = new CANTalon(LEFT_MOTOR_PORT);
+			rightMotor = new CANTalon(RIGHT_MOTOR_PORT);
+			driveJoystick = new Joystick(DRIVE_JOYSTICK_PORT);
+
+			forward = 0;
+			turn = 0;
+			strafe = 0;
+	}
+	~Drive(){
+		delete leftMotor;
+		delete rightMotor;
+		delete driveJoystick;
+
+		leftMotor = NULL;
+		rightMotor = NULL;
+		driveJoystick = NULL;
+	}
 	//float getXValue();
 	//float getYValue();
 	bool checkStrafe();
