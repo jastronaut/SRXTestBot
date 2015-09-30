@@ -93,7 +93,7 @@ float Drive::linearizeDrive(float inputVal)
 void Drive::driveMotors()
 {
 	forward = setForward(driveJoystick->GetY());
-	turn = setTurn(driveJoystick->GetX());
+	turn = setTurn(0.75*driveJoystick->GetX());
 	strafe = setStrafe(driveJoystick->GetX());
 	leftMotor->Set(linearizeDrive(forward - turn + strafe));
 	rightMotor->Set(linearizeDrive(-forward + turn - strafe));
